@@ -5,12 +5,28 @@ using UnityEngine.Rendering.RenderGraphModule;
 
 public class player : MonoBehaviour
 {
+    [Header("Rg & Cam")]
     public Rigidbody Rigidbody;
-    public float speed;
+    public Transform camareTransform;
+
+    [Header("jump")]
     public float jumpforce;
     public bool jump;
-    public Transform camareTransform;
-    public float speedrotation;
+
+    [Header("speed & sprint")]
+    public float sprint;
+    public float speed;
+    public float speedactual;
+
+    [Header("Multiplicadores de Velocidad")]
+    [Range(0f, 1f)] public float modificadorLados;  
+    [Range(0f, 1f)] public float modificadorAtras;  
+    [Range(0f, 1f)] public float modificadorSaltoAire; 
+
+    [Header("Direcciones")]
+    private float direccionX;
+    private float direccionZ;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,27 +35,48 @@ public class player : MonoBehaviour
 
     void Update()
     {
-         if (Input.GetKeyDown(KeyCode.Space) && jump)
+        if (Input.GetKeyDown(KeyCode.Space) && jump)
         {
-            Rigidbody.AddForce(new Vector3(0,jumpforce,0));
+            Rigidbody.AddForce(new Vector3(0,jumpforce,0),ForceMode.Impulse);
             jump = false;
         }
-        if (Input.GetKey(KeyCode.A))
+
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            Rigidbody.AddForce(new Vector3(-speed * Time.fixedDeltaTime,0,0), ForceMode.VelocityChange);
+            speedactual = sprint;
         }
-        if (Input.GetKey(KeyCode.D))
+        else speedactual = speed;
+
+        Vector3 camRotation = camareTransform.eulerAngles;
+        transform.rotation = Quaternion.Euler(0f, camRotation.y, 0f);
+
+        direccionX= Input.GetAxis("Horizontal");
+        direccionZ= Input.GetAxis("Vertical");
+
+    }
+    void FixedUpdate()
+    {
+        float velocidadFinalX = direccionX * speedactual;
+        float velocidadFinalZ = direccionZ * speedactual;
+
+        if (direccionZ < 0)
         {
-            Rigidbody.AddForce(new Vector3(speed* Time.fixedDeltaTime,0,0), ForceMode.VelocityChange);
+            velocidadFinalZ *= modificadorAtras;
         }
-        if (Input.GetKey(KeyCode.W))
+
+        if (direccionX != 0)
         {
-            Rigidbody.AddForce(new Vector3(0,0,speed* Time.fixedDeltaTime), ForceMode.VelocityChange);
+            velocidadFinalX *= modificadorLados;
+
+            // Si además de ir de costado está EN EL AIRE (saltando), reducimos la velocidad lateral aún más
+            if (!jump)
+            {
+                velocidadFinalX *= modificadorSaltoAire;
+            }
         }
-        if (Input.GetKey(KeyCode.S))
-        {
-            Rigidbody.AddForce(new Vector3(0,0,-speed* Time.fixedDeltaTime), ForceMode.VelocityChange);
-        }
+
+        Vector3 movimientoLocal = (transform.forward * velocidadFinalZ) + (transform.right * velocidadFinalX);
+        Rigidbody.linearVelocity = new Vector3(movimientoLocal.x, Rigidbody.linearVelocity.y, movimientoLocal.z);
     }
     void OnCollisionEnter(Collision collision)
     {
