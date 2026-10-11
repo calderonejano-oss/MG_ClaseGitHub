@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6829075511772233251}
   - component: {fileID: 866738060371328353}
   - component: {fileID: 754080153355993388}
+  - component: {fileID: 3274544992271346522}
   m_Layer: 0
   m_Name: power_UP(Agua)
   m_TagString: item
@@ -112,3 +113,17 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3274544992271346522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4926035610421948019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0597fc13a48e4ee38e93ff51b82f75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUP
+  tipodepoder: 0
+  power_UP_Habiliti: {fileID: 0}

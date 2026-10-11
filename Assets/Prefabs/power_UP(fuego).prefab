@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 522070268209188594}
   - component: {fileID: 739282135561468250}
   - component: {fileID: 504416657980216075}
+  - component: {fileID: 6734484108996630413}
   m_Layer: 0
   m_Name: power_UP(fuego)
   m_TagString: item
@@ -112,3 +113,17 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6734484108996630413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7667793614608810480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0597fc13a48e4ee38e93ff51b82f75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUP
+  tipodepoder: 0
+  power_UP_Habiliti: {fileID: 0}

@@ -9,6 +9,9 @@ public class player : MonoBehaviour
     public Rigidbody Rigidbody;
     public Transform camareTransform;
 
+    [Header("Moneda")]
+    public float puntajedemonedas;
+
     [Header("jump")]
     public float jumpforce;
     public bool jump;
@@ -84,6 +87,10 @@ public class player : MonoBehaviour
         {
             jump = true;
         }
+    }
+    public void puntajemonedas()
+    {
+        puntajedemonedas++;
     }
 }
     

@@ -1417,6 +1417,7 @@ GameObject:
   - component: {fileID: 1772095114}
   - component: {fileID: 1772095113}
   - component: {fileID: 1772095118}
+  - component: {fileID: 1772095119}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -1562,6 +1563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::player
   Rigidbody: {fileID: 0}
   camareTransform: {fileID: 228069944}
+  puntajedemonedas: 0
   jumpforce: 17
   jump: 0
   sprint: 8
@@ -1569,7 +1571,22 @@ MonoBehaviour:
   speedactual: 0
   modificadorLados: 0.6
   modificadorAtras: 0.5
-  modificadorSaltoAire: 0.7
+  modificadorSaltoAire: 0
+--- !u!114 &1772095119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772095112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7edbeae2da44bb38afb133028c3cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Power_UP_Habiliti
+  powerUP_Viento: 0
+  powerUP_Tierra: 0
+  powerUP_Agua: 0
 --- !u!1001 &1366762865223216664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1580,7 +1597,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2206767402203176288, guid: f91b08d449eeb491e9a33301b77ef313, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2206767402203176288, guid: f91b08d449eeb491e9a33301b77ef313, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1618,9 +1635,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6734484108996630413, guid: f91b08d449eeb491e9a33301b77ef313, type: 3}
+      propertyPath: tipodepoder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7667793614608810480, guid: f91b08d449eeb491e9a33301b77ef313, type: 3}
       propertyPath: m_Name
-      value: power_UP(fuego)
+      value: power_UP(viento)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1641,7 +1662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7364416623075210680, guid: 72c7553b9af574f8492de57daddfa9b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7364416623075210680, guid: 72c7553b9af574f8492de57daddfa9b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1702,7 +1723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3812677099723848701, guid: 6fdef0418766c422e9e7ecc8901ff107, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3812677099723848701, guid: 6fdef0418766c422e9e7ecc8901ff107, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1735,6 +1756,10 @@ PrefabInstance:
     - target: {fileID: 4215908815160597995, guid: 6fdef0418766c422e9e7ecc8901ff107, type: 3}
       propertyPath: m_Name
       value: moneda
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215908815160597995, guid: 6fdef0418766c422e9e7ecc8901ff107, type: 3}
+      propertyPath: m_TagString
+      value: item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1788,6 +1813,10 @@ PrefabInstance:
     - target: {fileID: 2342783058094863581, guid: d2a6d284a54704dedb2204bc3667069b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660571834445446698, guid: d2a6d284a54704dedb2204bc3667069b, type: 3}
+      propertyPath: tipodepoder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8524618293408875880, guid: d2a6d284a54704dedb2204bc3667069b, type: 3}
       propertyPath: m_Name
