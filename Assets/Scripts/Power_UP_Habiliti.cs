@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class Power_UP_Habiliti : MonoBehaviour
 {
     public Rigidbody Rigidbody;
@@ -28,11 +29,20 @@ public class Power_UP_Habiliti : MonoBehaviour
     public bool powerUP_Agua;
     public bool habilitado;
     public KeyCode impulsoinput = KeyCode.Alpha3;
+
+    [Header("Imagenes power up")]
+    public GameObject imageviento;
+    public GameObject imagenagua;
+    public GameObject imagentierra;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Rigidbody=GetComponent<Rigidbody>();
         player=GetComponent<player>();
+        imagentierra.SetActive(false);
+        imageviento.SetActive(false);
+        imagenagua.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,17 +56,20 @@ public class Power_UP_Habiliti : MonoBehaviour
         {
             InvocarPilarTierra();
             pilarpoder = false;
+            imagentierra.SetActive(false);
         }
         if(Input.GetKeyDown(impulsoinput) && powerUP_Agua == true && habilitado == true)
         {
             impulso_de_agua();
             habilitado = false;
+            imagenagua.SetActive(false);
         }
     }
 
     public void PowerViento()
     {
         powerUP_Viento = true;
+        imageviento.SetActive(true);
         Debug.Log("¡Poder de viento conseguido!");
     }
     void dash()
@@ -74,6 +87,7 @@ public class Power_UP_Habiliti : MonoBehaviour
     {
         powerUP_Tierra = true;
         pilarpoder = true;
+        imagentierra.SetActive(true);
         Debug.Log("¡Poder de tierra conseguido!");
     }
     void InvocarPilarTierra()
@@ -104,6 +118,7 @@ public class Power_UP_Habiliti : MonoBehaviour
         powerUP_Agua = true;
         habilitado = true;
         Debug.Log("¡Poder de agua conseguido!");
+        imagenagua.SetActive(true);
     }
     void impulso_de_agua()
     {

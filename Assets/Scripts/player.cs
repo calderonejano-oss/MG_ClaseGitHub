@@ -2,6 +2,8 @@ using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.RenderGraphModule;
+using UnityEngine.UI;
+using TMPro;
 
 public class player : MonoBehaviour
 {
@@ -30,10 +32,16 @@ public class player : MonoBehaviour
     private float direccionX;
     private float direccionZ;
 
+    [Header("canva")]
+    public TextMeshProUGUI puntajetext;
+    public float monedastotalparaganar;
+    public GameObject canvavictoria;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Rigidbody = GetComponent<Rigidbody>();
+        canvavictoria.SetActive(false);
     }
 
     void Update()
@@ -91,6 +99,14 @@ public class player : MonoBehaviour
     public void puntajemonedas()
     {
         puntajedemonedas++;
+        puntajetext.text = "Monedas Recolectadas: \n"+puntajedemonedas;
+        if(puntajedemonedas == monedastotalparaganar)
+        {
+            canvavictoria.SetActive(true);
+            Time.timeScale=0;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
     }
 }
     
