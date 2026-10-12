@@ -40,25 +40,22 @@ public class Power_UP_Habiliti : MonoBehaviour
     {
         Rigidbody=GetComponent<Rigidbody>();
         player=GetComponent<player>();
-        imagentierra.SetActive(false);
-        imageviento.SetActive(false);
-        imagenagua.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(dashinput)&& powerUP_Viento == true)
+        if(Input.GetKeyDown(dashinput)&& powerUP_Viento == true && imageviento == true)
         {
             dash();
         }
-        if (Input.GetKeyDown(pilarInput) && powerUP_Tierra == true && !construyendoPilar && pilarpoder == true)
+        if (Input.GetKeyDown(pilarInput) && powerUP_Tierra == true && !construyendoPilar && pilarpoder == true && imagentierra == true)
         {
             InvocarPilarTierra();
             pilarpoder = false;
             imagentierra.SetActive(false);
         }
-        if(Input.GetKeyDown(impulsoinput) && powerUP_Agua == true && habilitado == true)
+        if(Input.GetKeyDown(impulsoinput) && powerUP_Agua == true && habilitado == true && imagenagua == true)
         {
             impulso_de_agua();
             habilitado = false;
